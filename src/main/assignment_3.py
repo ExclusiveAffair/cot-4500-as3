@@ -131,22 +131,27 @@ def all_positive_eigenvalues(a):
 def is_positive_definite(a):
     return is_symmetric(a) and all_positive_eigenvalues(a)
 
+def print_float_double_spaced(s):
+    print("%.5f" % s)
+    print()
+
 def print_double_spaced(s):
     print(s)
     print()
 
 if __name__ == "__main__":
-    print_double_spaced(euler(0, 2, 1, 10, q1_2))
-    print_double_spaced(runge_kutta(0, 2, 1, 10, q1_2))
+    
+    print_float_double_spaced(euler(0, 2, 1, 10, q1_2))
+    print_float_double_spaced(runge_kutta(0, 2, 1, 10, q1_2))
 
     A = np.array([[2,-1,1],[1,3,1],[-1,5,4]], dtype=float)
     b = np.array([6,0,-3], dtype=float)
 
     x = gauss_jordan(A, b)
-    print_double_spaced(x)
+    print_double_spaced(np.array(x, dtype=np.double))
 
     lu = np.array([[1,1,0,3],[2,1,-1,1],[3,-1,-1,2],[-1,2,3,-1]])
-    print_double_spaced(determinant(lu))
+    print_float_double_spaced(determinant(lu))
     (l, u) = lu_factorize(lu)
     print_double_spaced(l)
     print_double_spaced(u)
